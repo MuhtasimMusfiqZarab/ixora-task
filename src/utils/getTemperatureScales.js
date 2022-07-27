@@ -1,8 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const temperatureScales = () => {
-
-  let scales = [{
+  let temperatureScales = [{
     id: uuidv4(),
     value :'Celcius'
   },{
@@ -10,6 +8,4 @@ export const temperatureScales = () => {
     value: 'Fahrenheit'
   }]
 
-  return scales;
-
-}
+  export default temperatureScales;
