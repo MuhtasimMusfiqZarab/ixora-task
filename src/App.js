@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState , useEffect} from "react";
+import { Dropdown } from "./components/dropdown";
+import { availableDates ,temperatureScales} from './utils/getAvailableDate';
+import { Card } from "./components/card";
 
 function App() {
+
+  const [date, setDate] = useState(null);
+  const [temperatureScale, setTemperatureScale]= useState('Celcius');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="dropdownFilters" >
+        <Dropdown title="Select Date" items={availableDates()} setItem={setDate} hasReset />
+        <Dropdown title="Temperature Scale" items={temperatureScales()} setItem={setDate} />
+      </div>
+      <Card/>
     </div>
   );
 }

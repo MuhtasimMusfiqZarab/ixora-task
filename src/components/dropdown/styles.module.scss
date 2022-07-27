@@ -1,0 +1,142 @@
+.container {
+  width: 100%;
+
+
+  &_inline {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+
+    .title {
+      margin: 0;
+      min-width: 80px;
+    }
+
+    .selected {
+      margin-bottom: 0;
+    }
+  }
+
+  .title {
+    margin: 0.5rem;
+  }
+}
+
+.select_box {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  position: relative;
+
+  label {
+    cursor: pointer;
+  }
+
+  .options_container {
+    background: #f9fbff;
+    color: #2a324b;
+    max-height: 0;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.4s;
+    border-radius: 8px;
+    overflow: hidden;
+
+    //to move above the options
+    order: 1;
+
+    position: absolute;
+    z-index: 1;
+    top: 3.5rem;
+
+    //hide radio icon
+    .option input {
+      display: none;
+    }
+
+    .option {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    //hover effect
+    .option:hover {
+      background: #e1e5ee;
+    }
+
+    //style the active ones
+    &.active {
+      max-height: 15rem;
+      opacity: 1;
+      overflow-y: scroll;
+    }
+
+    //style the scroll bar
+    &::-webkit-scrollbar {
+      width: 8px;
+      background: #e1e5ee;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #767b91;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+  }
+}
+
+.radio {
+  display: none;
+}
+
+.selected {
+  padding: 12px 24px;
+  cursor: pointer;
+  color: #2a324b;
+  border-radius: 0.2rem;
+  margin-bottom: 8px;
+  border: 1px solid #e1e5ee;
+  //position relative for positioning the icon
+  position: relative;
+  order: 0;
+
+  &::after {
+    content: "";
+    background: url("./arrow-down.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    fill: red;
+    position: absolute;
+    height: 8px;
+    width: 10px;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: all 0.4s;
+  }
+}
+
+//test
+.select_box .options_container.active + .selected::after {
+  transform: rotateX(180deg) translateY(50%);
+}
+
+// dropdown search box
+.item_search {
+  padding: 15px 16px 8px;
+
+  input[type="search"] {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0 10px;
+
+    &:focus {
+      border: 1px solid #767b91;
+    }
+  }
+}
