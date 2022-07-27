@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-export const Card = ({date}) => {
+export const Card = ({temperature, date}) => {
   
   return (
     <div className={styles.widget}>
-      <div className={styles.weatherIcon}></div>
+      <div className={styles.weatherIcon}><i className="wi wi-day-sunny"></i></div>
       <div className={styles.weatherInfo}>
         <div className={styles.temperature}><span>25&deg;c</span></div>
         <div className={styles.description}>    

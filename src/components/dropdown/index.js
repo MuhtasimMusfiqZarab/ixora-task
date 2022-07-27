@@ -32,18 +32,22 @@ export const Dropdown = ({
       }
     };
     
-    //no has reset available then set the first item as default
-    // if(!hasReset){
-    //   setSelectedItem(items[0].value);
-    // }else{
-    //   setSelectedItem('-');
-    // }
+    
 
-    document.addEventListener("mousedown", checkIfClickedOutside);
+      document.addEventListener("mousedown", checkIfClickedOutside);
     return () => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
-  }, [opened,hasReset]);
+  }, [opened]);
+
+  useEffect(()=>{
+
+    if(!hasReset && items){
+      setSelectedItem(items[0].value);
+    }else{
+      setSelectedItem('-');
+    }
+  },[hasReset, items])
 
   return (
     <div className={`${styles.container} ${isInline && styles.container_inline}`}>
